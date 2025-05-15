@@ -1,4 +1,3 @@
-![Battlestar Poster](images/A retro style space shooter with vibrant colors, pixelated graphics, and a dynamic space background .jpeg)
 ![Battlestar Animation](images/battlestar.gif)
 
 # Battlestar 🚀🌌
@@ -83,3 +82,10 @@ battlestar/               # Root folder
 This project is open-source and free to use for personal projects. 🚀
 
 Enjoy the battle among the stars! 🌠
+---
+
+## 🎬 Poster
+
+![Battlestar Poster](images/poster.jpeg)
+
+---
