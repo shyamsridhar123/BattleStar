@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Battlestar Galactica Inspired Game</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: black; }
+        canvas { display: block; margin: 0 auto; background: #000; }
+        
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            z-index: 10;
+        }
+        
+        .game-title {
+            color: #FF5020;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #FF8060;
+        }
+        
+        .game-button {
+            background-color: #4090FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px #90C0FF;
+        }
+        
+        .game-button:hover {
+            background-color: #FF5020;
+        }
+        
+        #game-over-screen {
+            display: none;
+        }
+        
+        .final-score {
+            font-size: 24px;
+            margin: 10px 0;
+            color: #FFFF40;
+        }
+        
+        .audio-control {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            z-index: 20;
+        }
+        
+        .audio-control button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .cache-button {
+            background-color: #4090FF !important;
+            color: white !important;
+            font-size: 14px !important;
+            padding: 5px 10px !important;
+            margin-left: 20px;
+            text-transform: uppercase;
+        }
+        
+        .cache-button:hover {
+            background-color: #FF5020 !important;
+        }
+        
+        .audio-notification {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 30;
+            display: none;
+        }
+        
+        .audio-notification button {
+            background-color: #4090FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="start-screen" class="screen">
+        <h1 class="game-title">Space Shooter</h1>
+        <p>Use arrow keys to move and spacebar to shoot</p>
+        <button id="start-button" class="game-button">Start Game</button>
+    </div>
+    
+    <div id="game-over-screen" class="screen">
+        <h1 class="game-title">Game Over</h1>
+        <p class="final-score" id="final-score">Score: 0</p>
+        <button id="restart-button" class="game-button">Play Again</button>
+    </div>
+    
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    
+    <div class="audio-control">
+        <span>Music:</span>
+        <button id="toggle-music">🔊</button>
+        <button id="clear-cache" class="game-button cache-button">Clear Cache</button>
+    </div>
+    
+    <div id="audio-notification" class="audio-notification">
+        <h3>Sound not working?</h3>
+        <p>Click the button below to enable game audio</p>
+        <button id="enable-audio">Enable Audio</button>
+    </div>
+    
+    <!-- Audio element for background music -->
+    <audio id="background-music" loop preload="auto">
+        <source src="audio/EPIC!!!.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Sound effects -->
+    <audio id="laser-sound" preload="auto">
+        <source src="audio/laser-sound.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="explosion-sound" preload="auto">
+        <source src="audio/explosion-sound.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script src="game.js"></script>
+</body>
+</html>
